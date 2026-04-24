@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adithya Yoga — Find Your Balance</title>
+  <link rel="icon" type="image/x-icon" href="C:\Users\Adithyan\Downloads\Adithya_Yoga__1_-removebg-preview.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ============================================================
+       ✏️  EASY EDIT ZONE — Change your site details here
+       ============================================================ */
+    :root {
+      /* --- Brand Colors --- */
+      --cream:      #f5f0e8;
+      --warm-white: #fdfaf4;
+      --terracotta: #c4704a;
+      --terracotta-light: #d98b65;
+      --sage:       #7a9e7e;
+      --sage-dark:  #4a6b4e;
+      --bark:       #3b2e26;
+      --bark-mid:   #5c4a3e;
+      --gold:       #c9a84c;
+
+      /* --- Fonts --- */
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', sans-serif;
+
+      /* --- Spacing --- */
+      --section-pad: 100px 5%;
+    }
+
+    /* ============================================================
+       ✏️  SITE CONTENT — Edit text directly in HTML below
+       ============================================================ */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--warm-white);
+      color: var(--bark);
+      overflow-x: hidden;
+    }
+
+    /* ── SMART NAVBAR STYLES ───────────────────────────────── */
+    #smart-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      background: rgba(253, 250, 244, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(59,46,38,0.08);
+      z-index: 1000;
+      box-sizing: border-box;
+      transition: transform 0.3s ease-in-out;
+    }
+    #smart-nav.hidden {
+      transform: translateY(-100%);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--bark);
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo span { 
+      color: var(--terracotta); 
+    }
+    .nav-logo img {
+      max-height: 50px;
+      width: auto;
+    }
+    .nav-links { 
+      display: flex; 
+      gap: 36px; 
+      list-style: none; 
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bark-mid);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { 
+      color: var(--terracotta); 
+    }
+    .nav-cta {
+      background: var(--terracotta);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 30px;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .nav-cta:hover { 
+      background: var(--bark); 
+      transform: translateY(-2px); 
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 80% 50%, rgba(122,158,126,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 20% 80%, rgba(196,112,74,0.12) 0%, transparent 60%);
+    }
+    .hero-blob {
+      position: absolute;
+      right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 560px; height: 560px;
+      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+      background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+      opacity: 0.12;
+      animation: blob-morph 10s ease-in-out infinite;
+    }
+    @keyframes blob-morph {
+      0%,100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+      33%      { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
+      66%      { border-radius: 70% 30% 50% 50% / 30% 70% 50% 50%; }
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 140px 5% 80px;
+      animation: fade-up 1s ease both;
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 5.6rem);
+      line-height: 1.07;
+      font-weight: 300;
+      color: var(--bark);
+      margin-bottom: 28px;
+    }
+    .hero-title em { color: var(--terracotta); font-style: italic; }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--bark-mid);
+      max-width: 500px;
+      font-weight: 300;
+      margin-bottom: 44px;
+    }
+    .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      box-shadow: 0 6px 20px rgba(196,112,74,0.3);
+    }
+    .btn-primary:hover { background: var(--bark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(59,46,38,0.2); }
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--bark-mid);
+      color: var(--bark);
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 500;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .btn-ghost:hover { border-color: var(--terracotta); color: var(--terracotta); }
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(59,46,38,0.12);
+      animation: fade-up 1s 0.3s ease both;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark-mid); }
+
+    /* ── ABOUT / DETAILS ─────────────────────────────────── */
+    #about {
+      padding: var(--section-pad);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      background: var(--warm-white);
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card {
+      background: var(--cream);
+      border-radius: 24px;
+      padding: 56px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: var(--sage);
+      opacity: 0.1;
+    }
+    .about-card::after {
+      content: '🪷';
+      position: absolute;
+      bottom: 20px; right: 30px;
+      font-size: 5rem;
+      opacity: 0.15;
+    }
+    .about-quote {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--bark);
+    }
+    .about-quote-attr {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--bark);
+      margin-bottom: 24px;
+    }
+    .section-body {
+      font-size: 0.98rem;
+      line-height: 1.85;
+      color: var(--bark-mid);
+      font-weight: 300;
+    }
+    .feature-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--bark-mid);
+    }
+    .feature-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      flex-shrink: 0;
+    }
+
+    /* ── CLASSES ─────────────────────────────────────────── */
+    #classes {
+      padding: var(--section-pad);
+      background: var(--bark);
+      color: var(--cream);
+    }
+    .classes-header { text-align: center; margin-bottom: 64px; }
+    .classes-header .section-label { color: var(--gold); }
+    .classes-header .section-title { color: var(--cream); }
+    .classes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .class-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .class-card:hover { transform: translateY(-6px); border-color: var(--terracotta-light); }
+    .class-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(196,112,74,0.25), transparent 70%);
+    }
+    .class-icon {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .class-name {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .class-tag {
+      display: inline-block;
+      background: rgba(196,112,74,0.25);
+      color: var(--terracotta-light);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .class-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(245,240,232,0.65);
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+    .class-details { display: flex; flex-direction: column; gap: 8px; }
+    .class-details span {
+      font-size: 0.8rem;
+      color: rgba(245,240,232,0.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .class-details span::before { content: '—'; color: var(--gold); }
+
+    /* ── COMMUNITY ───────────────────────────────────────── */
+    #community {
+      padding: var(--section-pad);
+      background: var(--cream);
+    }
+    .community-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .community-text .section-body { margin-bottom: 32px; }
+    .community-pillars { display: flex; flex-direction: column; gap: 20px; }
+    .pillar {
+      display: flex;
+      gap: 18px;
+      padding: 22px;
+      background: var(--warm-white);
+      border-radius: 14px;
+      border-left: 3px solid var(--sage);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .pillar:hover { border-color: var(--terracotta); transform: translateX(6px); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .pillar-title { font-weight: 600; font-size: 0.9rem; color: var(--bark); margin-bottom: 4px; }
+    .pillar-text { font-size: 0.82rem; color: var(--bark-mid); line-height: 1.6; font-weight: 300; }
+    .community-join {
+      background: var(--warm-white);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid rgba(59,46,38,0.08);
+    }
+    .join-emoji { font-size: 3.5rem; margin-bottom: 16px; display: block; }
+    .join-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 12px;
+      color: var(--bark);
+    }
+    .join-text { font-size: 0.88rem; color: var(--bark-mid); line-height: 1.7; margin-bottom: 28px; font-weight: 300; }
+    .members-row { display: flex; justify-content: center; gap: -10px; margin-bottom: 20px; }
+    .member-dot {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin-left: -8px;
+      background: var(--sage);
+    }
+
+    /* ── TESTIMONIALS ────────────────────────────────────── */
+    #testimonials {
+      padding: var(--section-pad);
+      background: var(--warm-white);
+    }
+    .testimonials-header { text-align: center; margin-bottom: 60px; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testi-card {
+      background: var(--cream);
+      border-radius: 18px;
+      padding: 36px 32px;
+      position: relative;
+    }
+    .testi-card::before {
+      content: '"';
+      position: absolute;
+      top: 14px; left: 28px;
+      font-family: var(--font-display);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--terracotta);
+      opacity: 0.2;
+    }
+    .testi-text {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--bark-mid);
+      font-style: italic;
+      margin-bottom: 24px;
+      padding-top: 16px;
+      font-weight: 300;
+    }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--sage);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 600; font-size: 0.88rem; color: var(--bark); }
+    .testi-role { font-size: 0.75rem; color: var(--bark-mid); font-weight: 300; }
+    .stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 2px; }
+
+    /* ── CONTACT ─────────────────────────────────────────── */
+    #contact {
+      padding: var(--section-pad);
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info .section-body { margin-bottom: 32px; }
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .contact-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .contact-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 3px; }
+    .contact-value { font-size: 0.9rem; color: var(--bark-mid); font-weight: 300; }
+    .contact-form {
+      background: var(--warm-white);
+      border-radius: 20px;
+      padding: 44px 40px;
+      border: 1px solid rgba(59,46,38,0.08);
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: var(--bark);
+      margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bark-mid);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid rgba(59,46,38,0.15);
+      border-radius: 10px;
+      background: var(--cream);
+      color: var(--bark);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px rgba(196,112,74,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--terracotta);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--bark); transform: translateY(-2px); }
+    .form-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--bark-mid);
+      margin-top: 12px;
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--bark);
+      color: var(--cream);
+      padding: 60px 5% 30px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--terracotta-light); }
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: rgba(245,240,232,0.5);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--terracotta-light); }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px; }
+    .footer-copy { font-size: 0.75rem; color: rgba(245,240,232,0.3); font-weight: 300; }
+
+    /* ── DECORATIVE DIVIDER ──────────────────────────────── */
+    .wave-divider {
+      width: 100%;
+      line-height: 0;
+      overflow: hidden;
+    }
+
+    /* ── PROMO BANNER ────────────────────────────────────── */
+    #promo {
+      padding: 60px 5%;
+      background: var(--terracotta);
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #promo::after {
+      content: '✨';
+      position: absolute;
+      top: -20px; right: 10%;
+      font-size: 6rem;
+      opacity: 0.1;
+      transform: rotate(15deg);
+    }
+    .promo-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--bark);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .promo-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .promo-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+    .btn-promo {
+      display: inline-block;
+      background: var(--cream);
+      color: var(--terracotta);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+    .btn-promo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* ── PRICING BLOCKS (Inside Class Cards) ─────────────── */
+    .pricing-tier {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.08);
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-top: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .pricing-tier.highlight {
+      background: rgba(196,112,74,0.15);
+      border-color: rgba(196,112,74,0.4);
+    }
+    .tier-name {
+      font-size: 0.8rem;
+      color: var(--cream);
+      font-weight: 500;
+    }
+    .tier-name small {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--gold);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .tier-price {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--terracotta-light);
+      font-weight: 600;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 860px) {
+      #about, #community, #contact { grid-template-columns: 1fr; gap: 40px; }
+      .classes-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; flex-wrap: wrap; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; } /* Hides links on mobile */
+    }
+
+    /* ── SCROLL ANIMATIONS ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <header id="smart-nav">
+    <div class="nav-logo">
+      Adithya <span>Yoga</span>
+      </div>
+    
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Class</a></li>
+    </ul>
+  </header>
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-blob"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Adithya Yoga · By: P.Geetha · Est. 2026 </p>
+      <h1 class="hero-title">
+        Breathe Deep,<br>
+        Move with <em>Purpose</em>
+      </h1>
+      <p class="hero-subtitle">
+        A sacred space where ancient yoga wisdom meets modern well-being.
+        Begin your journey toward balance, strength, and inner clarity.
+      </p>
+      <div class="btn-row">
+        <a href="#classes" class="btn-primary">Explore Classes</a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <span class="stat-num">200+</span>
+          <span class="stat-label">Students</span>
+        </div>
+        <div>
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Years Teaching</span>
+        </div>
+        <div>
+          <span class="stat-num">2</span>
+          <span class="stat-label">Class Styles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <p class="about-quote">
+          "Yoga is not about touching your toes — it is about what you learn on the way down."
+        </p>
+        <p class="about-quote-attr">— P.Geetha, Instructor</p>
+      </div>
+    </div>
+    <div class="about-content reveal reveal-delay-1">
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">More than a class — a way of living</h2>
+      <p class="section-body">
+        At Adithya Yoga, we believe every breath is an invitation to come home to yourself.
+        Our studio in Thrissur offers a warm, inclusive space rooted in the classical traditions
+        of Hatha and Vinyasa yoga, thoughtfully adapted for modern practitioners of all levels.
+      </p>
+      <ul class="feature-list">
+        <li>Small groups for personalised attention</li>
+        <li>Certified instructor with 5+ years of experience</li>
+        <li>Both beginner-friendly and advanced tracks</li>
+        <li>Flexible morning & evening schedules</li>
+        <li>Meditation and pranayama included</li>
+      </ul>
+    </div>
+  </section>
+  <section id="classes">
+    <div class="classes-header reveal">
+      <p class="section-label">Our Offerings</p>
+      <h2 class="section-title" style="color:var(--cream)">Two paths, one destination</h2>
+    </div>
+    <div class="classes-grid">
+
+      <div class="class-card reveal reveal-delay-1">
+        <span class="class-icon">☀️</span>
+        <h3 class="class-name">Morning Session</h3>
+        <span class="class-tag">Morning clarity through mindful movement</span>
+        <p class="class-desc">
+          Start your day with traditional asanas and mindful pranayama to find
+ physical balance and mental clarity before stepping into your daily routine.
+        </p>
+        <div class="class-details" style="margin-bottom: 20px;">
+          <span>Mondays, Wednesdays & Fridays · 5:00 AM</span>
+          <span>60 minutes per session</span>
+          <span>All levels welcome</span>
+        </div>
+        
+        <div class="pricing-tier">
+          <span class="tier-name">Monthly Plan</span>
+          <span class="tier-price">₹1,000</span>
+        </div>
+        <div class="pricing-tier highlight">
+          <span class="tier-name">3-Month Plan<small>Best Value — Save ₹500</small></span>
+          <span class="tier-price">₹4,000</span>
+        </div>
+      </div>
+
+      <div class="class-card reveal reveal-delay-2">
+        <span class="class-icon">🌙</span>
+        <h3 class="class-name">Evening Session</h3>
+        <span class="class-tag">Your evening ritual for inner peace</span>
+        <p class="class-desc">
+         A gentle flow to decompress after work, stretching out physical stiffness
+ and clearing mental clutter.
+        </p>
+        <div class="class-details" style="margin-bottom: 20px;">
+          <span>Tuesdays, Thursdays & Saturdays · 6:00 PM</span>
+          <span>60 minutes per session</span>
+          <span>All levels welcome</span>
+        </div>
+
+        <div class="pricing-tier">
+          <span class="tier-name">Monthly Plan</span>
+          <span class="tier-price">₹1,500</span>
+        </div>
+        <div class="pricing-tier highlight">
+          <span class="tier-name">3-Month Plan<small>Best Value — Save ₹500</small></span>
+          <span class="tier-price">₹4,000</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="community">
+    <div class="community-inner">
+      <div class="community-text reveal">
+        <p class="section-label">Community</p>
+        <h2 class="section-title">A family on and off the mat</h2>
+        <p class="section-body">
+          Yoga is stronger when practised together. Our community is a space of
+          mutual support, shared growth, and genuine connection — inside the studio
+          and beyond it.
+        </p>
+        <div class="community-pillars">
+          <div class="pillar">
+            <span class="pillar-icon">🤝</span>
+            <div>
+              <p class="pillar-title">Supportive Environment</p>
+              <p class="pillar-text">No judgement, only encouragement. Every body and every level is celebrated here.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🌱</span>
+            <div>
+              <p class="pillar-title">Monthly Workshops</p>
+              <p class="pillar-text">Deep-dives into pranayama, meditation, and advanced asana for those who want to explore further.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🎉</span>
+            <div>
+              <p class="pillar-title">Seasonal Events</p>
+              <p class="pillar-text">Sunrise sessions, community clean-ups, and festive yoga gatherings that bring us together.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="community-join reveal reveal-delay-1">
+        <span class="join-emoji">🙏</span>
+        <h3 class="join-title">Join our growing family</h3>
+        <p class="join-text">
+          Over 200 students have found a home in our studio. Come experience the warmth,
+          discipline, and joy of practicing with a community that truly cares.
+        </p>
+        <div class="members-row">
+          <div class="member-dot">🧘</div>
+          <div class="member-dot" style="background:var(--terracotta)">🌸</div>
+          <div class="member-dot" style="background:var(--gold)">🌿</div>
+          <div class="member-dot" style="background:var(--bark-mid)">✨</div>
+          <div class="member-dot" style="background:var(--sage-dark)">🪷</div>
+        </div>
+        <a href="#contact" class="btn-primary" style="text-decoration:none; display:inline-block">
+          Join the Community
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="testimonials-header reveal">
+      <p class="section-label">Student Stories</p>
+      <h2 class="section-title">What our community says</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testi-card reveal reveal-delay-1">
+        <p class="testi-text">
+          "Adithya Yoga's morning session completely changed my relationship with mornings.
+          I came in with a stiff back and no flexibility — now I look forward to every session."
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar">🌻</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="testi-name">Meera Krishnan</p>
+            <p class="testi-role">Morning Session</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <p class="testi-text">
+          "The evening session is the perfect bridge between a busy workday and a restful evening.
+          I left feeling completely recharged and centered!"
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--terracotta)">🌊</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="testi-name">Rohan Nair</p>
+            <p class="testi-role">Evening Session</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-3">
+        <p class="testi-text">
+          "The energy in your online classes is incredible—it feels just like being in a physical studio!<br>
+          I love how I can find balance and strength right from my own home whenever 
+          I need a reset."
+        </p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--gold)">🍂</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="testi-name">Priya Suresh</p>
+            <p class="testi-role"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-info reveal">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Let's begin your journey</h2>
+      <p class="section-body">
+        Have questions about classes, schedules, or pricing? 
+        Send a message and we'll get back to you within 72 hours.
+      </p>
+
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <div>
+          <p class="contact-label">Location</p>
+          <p class="contact-value">Kuttippala, Malappuram, Kerala, India</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">☎️</span>
+        <div>
+          <p class="contact-label">Phone</p>
+          <p class="contact-value">9400880974</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <p class="contact-label">Email</p>
+          <p class="contact-value">adithyayoga.2026@gmail.com</p>
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+    <div class="contact-form reveal reveal-delay-1">
+      <h3 class="form-title">Send us a message</h3>
+      <form id="contactForm" action="https://formspree.io/f/xlgaoklz" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name<span style="color: red;">*</span></label>
+            <input type="text" id="fname" name="First Name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone<span style="color: red;">*</span></label>
+            <input type="tel" id="phone" name="Phone" placeholder="+91 00000 00000" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address<span style="color: red;">*</span></label>
+          <input type="email" id="email" name="Email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="classtype">Interested In</label>
+          <select id="classtype" name="Interested In">
+            <option value="">— Select a class & plan —</option>
+            <option value="Morning Session - Monthly">Morning Session (5-6am) - Monthly</option>
+            <option value="Morning Session - 3 Months">Morning Session (5-6am) - 3 Month Plan</option>
+            <option value="Evening Session - Monthly">Evening Session (6-7pm) - Monthly</option>
+            <option value="Evening Session - 3 Months">Evening Session (6-7pm) - 3 Month Plan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" placeholder="Tell us a bit about yourself or any questions you have…"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message 🙏</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Adithya <span>Yoga</span></div>
+    <p class="footer-tagline">Breathe · Move · Transform</p>
+    <nav class="footer-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#classes">Classes</a>
+      <a href="#community">Community</a>
+      <a href="#testimonials">Stories</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <hr class="footer-divider"/>
+    <p class="footer-copy">© 2026 Adithya Yoga · All rights reserved</p>
+  </footer>
+
+  <script>
+    // ── Smart Navbar Scroll Behavior
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('smart-nav');
+
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Hide if scrolling down and past 80px from top
+      if (currentScroll > lastScrollTop && currentScroll > 80) {
+        navbar.classList.add('hidden');
+      } else {
+        // Show if scrolling up
+        navbar.classList.remove('hidden');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+    });
+
+    // ── Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+    
+    // Form submission is now handled automatically by Formspree.
+  </script>
+</body>
+</html>
