@@ -74,20 +74,30 @@
       letter-spacing: 0.02em;
       display: flex;
       align-items: center;
+      z-index: 1001; /* Keeps logo above mobile menu */
     }
     .nav-logo span { 
       color: var(--terracotta); 
     }
-    .nav-logo img {
-      max-height: 50px;
-      width: auto;
+    
+    /* Hamburger Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--bark);
+      cursor: pointer;
+      z-index: 1001;
     }
+
     .nav-links { 
       display: flex; 
       gap: 36px; 
       list-style: none; 
       margin: 0;
       padding: 0;
+      align-items: center;
     }
     .nav-links a {
       font-size: 0.85rem;
@@ -619,74 +629,6 @@
     .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px; }
     .footer-copy { font-size: 0.75rem; color: rgba(245,240,232,0.3); font-weight: 300; }
 
-    /* ── DECORATIVE DIVIDER ──────────────────────────────── */
-    .wave-divider {
-      width: 100%;
-      line-height: 0;
-      overflow: hidden;
-    }
-
-    /* ── PROMO BANNER ────────────────────────────────────── */
-    #promo {
-      padding: 60px 5%;
-      background: var(--terracotta);
-      color: #fff;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    #promo::after {
-      content: '✨';
-      position: absolute;
-      top: -20px; right: 10%;
-      font-size: 6rem;
-      opacity: 0.1;
-      transform: rotate(15deg);
-    }
-    .promo-badge {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--bark);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .promo-title {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 300;
-      margin-bottom: 12px;
-    }
-    .promo-desc {
-      font-size: 0.95rem;
-      font-weight: 300;
-      max-width: 600px;
-      margin: 0 auto 24px;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.9);
-    }
-    .btn-promo {
-      display: inline-block;
-      background: var(--cream);
-      color: var(--terracotta);
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.25s;
-    }
-    .btn-promo:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
     /* ── PRICING BLOCKS (Inside Class Cards) ─────────────── */
     .pricing-tier {
       display: flex;
@@ -722,13 +664,58 @@
     }
 
     /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 992px) {
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 860px) {
-      #about, #community, #contact { grid-template-columns: 1fr; gap: 40px; }
+      :root {
+        --section-pad: 70px 5%; /* Shrink spacing for mobile */
+      }
+      
+      #about, #community, #contact { grid-template-columns: 1fr; gap: 50px; }
       .classes-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 28px; flex-wrap: wrap; }
       .form-row { grid-template-columns: 1fr; }
-      .nav-links { display: none; } /* Hides links on mobile */
+      
+      /* Hero Adjustments */
+      .hero-inner { padding-top: 120px; text-align: center; }
+      .hero-subtitle { margin: 0 auto 36px; }
+      .btn-row { justify-content: center; }
+      .hero-stats { justify-content: center; gap: 30px; flex-wrap: wrap; text-align: center; }
+      .hero-blob { width: 350px; height: 350px; right: -50px; top: 30%; }
+
+      /* Mobile Navigation Menu */
+      .mobile-menu-btn { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--warm-white);
+        flex-direction: column;
+        padding: 30px 5%;
+        box-shadow: 0 10px 20px rgba(59,46,38,0.1);
+        transform: translateY(-150%);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        pointer-events: none; /* Prevents clicking when hidden */
+      }
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-links li { width: 100%; text-align: center; }
+      .nav-cta { display: inline-block; width: 100%; }
+    }
+
+    /* Smaller Mobile Tweaks */
+    @media (max-width: 480px) {
+      .about-card { padding: 40px 30px; }
+      .class-card { padding: 30px 20px; }
+      .contact-form { padding: 30px 20px; }
+      .pricing-tier { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
 
     /* ── SCROLL ANIMATIONS ───────────────────────────────── */
@@ -748,8 +735,10 @@
   <header id="smart-nav">
     <div class="nav-logo">
       Adithya <span>Yoga</span>
-      </div>
+    </div>
     
+    <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#classes">Classes</a></li>
@@ -757,6 +746,7 @@
       <li><a href="#contact" class="nav-cta">Book a Class</a></li>
     </ul>
   </header>
+
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-blob"></div>
@@ -817,6 +807,7 @@
       </ul>
     </div>
   </section>
+
   <section id="classes">
     <div class="classes-header reveal">
       <p class="section-label">Our Offerings</p>
@@ -1016,8 +1007,6 @@
           <p class="contact-value">adithyayoga.2026@gmail.com</p>
         </div>
       </div>
-      </div>
-
     </div>
 
     <div class="contact-form reveal reveal-delay-1">
@@ -1072,6 +1061,22 @@
   </footer>
 
   <script>
+    // ── Mobile Menu Toggle
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    mobileBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
     // ── Smart Navbar Scroll Behavior
     let lastScrollTop = 0;
     const navbar = document.getElementById('smart-nav');
@@ -1079,8 +1084,8 @@
     window.addEventListener('scroll', function() {
       let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
       
-      // Hide if scrolling down and past 80px from top
-      if (currentScroll > lastScrollTop && currentScroll > 80) {
+      // Hide if scrolling down, past 80px, and mobile menu isn't open
+      if (currentScroll > lastScrollTop && currentScroll > 80 && !navLinks.classList.contains('active')) {
         navbar.classList.add('hidden');
       } else {
         // Show if scrolling up
